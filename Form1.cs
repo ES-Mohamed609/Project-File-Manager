@@ -60,11 +60,11 @@ namespace Project_File_Manager
             }
             textBox2.Text = fileDialog.FileName;
             textBox1.Text= Path.GetFileName(fileDialog.FileName);
-            /*  fileDialog.Multiselect = true;
-           foreach(string file in fileDialog.FileNames)
-           {
-               MessageBox.Show(file);
-           }*/
+            fileDialog.Multiselect = true;
+            foreach(string file in fileDialog.FileNames)
+            {
+                MessageBox.Show(file);
+            }
 
 
         }
