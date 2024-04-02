@@ -9,13 +9,49 @@ namespace Project_File_Manager
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {
+        {     if (textBox2.Text == "" && textBox1.Text == "")
+               {
+                 FolderBrowserDialog dialog = new FolderBrowserDialog();
+                  MessageBox.Show("choose folders’path then enter folders’name then click on Create ");
+                 dialog.ShowDialog();
+                 textBox2.Text = dialog.SelectedPath;
+
+                }
+                else if (textBox2.Text != "" && textBox1.Text == "")
+                {
+                  MessageBox.Show("enter name");
+     
+                }
+                else if (textBox2.Text != "" && textBox1.Text !="")
+                {
+                    Directory.CreateDirectory(textBox2.Text + textBox1.Text);
+                    textBox2.Text = "";
+                     textBox1.Text = "";
+                     MessageBox.Show("folder created");
+                }
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+                if (textBox2.Text == "" && textBox1.Text == "")
+                 {
+                     FolderBrowserDialog dialog = new FolderBrowserDialog();
+                     MessageBox.Show("choose folder then enter folder name then click on Rename ");
+                     dialog.ShowDialog();
+                     textBox2.Text = dialog.SelectedPath;
 
+                 }
+
+                 else if (textBox2.Text == textBox1.Text )
+                 {      
+                       string fristname = textBox2.Text;
+                       string secondName = textBox1.Text;
+                       Directory.Move(fristname, secondName);
+                       textBox2.Text = "";
+                       textBox1.Text = "";
+                       MessageBox.Show("folder Renamed");
+                  }
         }
 
         private void button5_Click(object sender, EventArgs e)
