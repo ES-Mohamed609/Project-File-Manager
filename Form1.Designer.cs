@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             Movbtn = new Button();
-            Renbtn = new Button();
-            crtbtn = new Button();
+            Renamebtn = new Button();
+            createbtn = new Button();
             Delbtn = new Button();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
@@ -52,29 +52,29 @@
             Movbtn.UseVisualStyleBackColor = false;
             Movbtn.Click += button1_Click;
             // 
-            // Renbtn
+            // Renamebtn
             // 
-            Renbtn.BackColor = Color.WhiteSmoke;
-            Renbtn.Location = new Point(39, 131);
-            Renbtn.Margin = new Padding(4, 2, 4, 2);
-            Renbtn.Name = "Renbtn";
-            Renbtn.Size = new Size(208, 55);
-            Renbtn.TabIndex = 1;
-            Renbtn.Text = "Rename Folder";
-            Renbtn.UseVisualStyleBackColor = false;
-            Renbtn.Click += button2_Click;
+            Renamebtn.BackColor = Color.WhiteSmoke;
+            Renamebtn.Location = new Point(39, 131);
+            Renamebtn.Margin = new Padding(4, 2, 4, 2);
+            Renamebtn.Name = "Renamebtn";
+            Renamebtn.Size = new Size(208, 55);
+            Renamebtn.TabIndex = 1;
+            Renamebtn.Text = "Rename Folder";
+            Renamebtn.UseVisualStyleBackColor = false;
+            Renamebtn.Click += button2_Click;
             // 
-            // crtbtn
+            // createbtn
             // 
-            crtbtn.BackColor = Color.WhiteSmoke;
-            crtbtn.Location = new Point(39, 26);
-            crtbtn.Margin = new Padding(4, 2, 4, 2);
-            crtbtn.Name = "crtbtn";
-            crtbtn.Size = new Size(208, 55);
-            crtbtn.TabIndex = 3;
-            crtbtn.Text = "Create Folder";
-            crtbtn.UseVisualStyleBackColor = false;
-            crtbtn.Click += button4_Click;
+            createbtn.BackColor = Color.WhiteSmoke;
+            createbtn.Location = new Point(39, 26);
+            createbtn.Margin = new Padding(4, 2, 4, 2);
+            createbtn.Name = "createbtn";
+            createbtn.Size = new Size(208, 55);
+            createbtn.TabIndex = 3;
+            createbtn.Text = "Create Folder";
+            createbtn.UseVisualStyleBackColor = false;
+            createbtn.Click += button4_Click;
             // 
             // Delbtn
             // 
@@ -158,8 +158,8 @@
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(Delbtn);
-            Controls.Add(crtbtn);
-            Controls.Add(Renbtn);
+            Controls.Add(createbtn);
+            Controls.Add(Renamebtn);
             Controls.Add(Movbtn);
             Margin = new Padding(4, 2, 4, 2);
             Name = "Form1";
@@ -171,8 +171,8 @@
         #endregion
 
         private Button Movbtn;
-        private Button Renbtn;
-        private Button crtbtn;
+        private Button Renamebtn;
+        private Button createbtn;
         private Button Delbtn;
         private TextBox textBox1;
         private TextBox textBox2;

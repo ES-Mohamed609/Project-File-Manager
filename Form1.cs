@@ -59,7 +59,7 @@ namespace Project_File_Manager
                 textBox2.Text = "you didn't select the file";
             }
             textBox2.Text = fileDialog.FileName;
-            textBox1.Text= Path.GetFileName(fileDialog.FileName);
+            textBox1.Text = Path.GetFileName(fileDialog.FileName);
             /*fileDialog.Multiselect = true;
             foreach(string file in fileDialog.FileNames)
             {
