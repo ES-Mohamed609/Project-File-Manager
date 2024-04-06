@@ -37,23 +37,20 @@ namespace Project_File_Manager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "" && textBox1.Text == "")
+           
+            if (textBox2.Text != "" && textBox1.Text == "")
             {
-                FolderBrowserDialog dialog = new FolderBrowserDialog();
-                MessageBox.Show("choose folder then enter folder name then click on Rename ");
-                dialog.ShowDialog();
-                textBox2.Text = dialog.SelectedPath;
+                MessageBox.Show("enter name");
 
             }
-
-            else if (textBox2.Text == textBox1.Text)
+            else if (textBox2.Text != "" && textBox1.Text != "")
             {
                 string fristname = textBox2.Text;
                 string secondName = textBox1.Text;
                 Directory.Move(fristname, secondName);
                 textBox2.Text = "";
                 textBox1.Text = "";
-                MessageBox.Show("folder Renamed");
+               
             }
         }
 
