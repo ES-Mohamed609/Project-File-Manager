@@ -38,6 +38,7 @@
             label2 = new Label();
             accbtn = new Button();
             openFileDialog1 = new OpenFileDialog();
+            folderBrowserDialog1 = new FolderBrowserDialog();
             SuspendLayout();
             // 
             // Movbtn
@@ -180,5 +181,6 @@
         private Label label2;
         private Button accbtn;
         private OpenFileDialog openFileDialog1;
+        private FolderBrowserDialog folderBrowserDialog1;
     }
 }

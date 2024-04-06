@@ -1,4 +1,6 @@
 using System.IO;
+using System.Windows.Forms;
+
 namespace Project_File_Manager
 {
     public partial class Form1 : Form
@@ -9,49 +11,50 @@ namespace Project_File_Manager
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {     if (textBox2.Text == "" && textBox1.Text == "")
-               {
-                 FolderBrowserDialog dialog = new FolderBrowserDialog();
-                  MessageBox.Show("choose folders’path then enter folders’name then click on Create ");
-                 dialog.ShowDialog();
-                 textBox2.Text = dialog.SelectedPath;
+        {
+            if (textBox2.Text == "" && textBox1.Text == "")
+            {
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                MessageBox.Show("choose folders’path then enter folders’name then click on Create ");
+                dialog.ShowDialog();
+                textBox2.Text = dialog.SelectedPath;
 
-                }
-                else if (textBox2.Text != "" && textBox1.Text == "")
-                {
-                  MessageBox.Show("enter name");
-     
-                }
-                else if (textBox2.Text != "" && textBox1.Text !="")
-                {
-                    Directory.CreateDirectory(textBox2.Text + textBox1.Text);
-                    textBox2.Text = "";
-                     textBox1.Text = "";
-                     MessageBox.Show("folder created");
-                }
+            }
+            else if (textBox2.Text != "" && textBox1.Text == "")
+            {
+                MessageBox.Show("enter name");
+
+            }
+            else if (textBox2.Text != "" && textBox1.Text != "")
+            {
+                Directory.CreateDirectory(textBox2.Text + textBox1.Text);
+                textBox2.Text = "";
+                textBox1.Text = "";
+                MessageBox.Show("folder created");
+            }
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-                if (textBox2.Text == "" && textBox1.Text == "")
-                 {
-                     FolderBrowserDialog dialog = new FolderBrowserDialog();
-                     MessageBox.Show("choose folder then enter folder name then click on Rename ");
-                     dialog.ShowDialog();
-                     textBox2.Text = dialog.SelectedPath;
+            if (textBox2.Text == "" && textBox1.Text == "")
+            {
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                MessageBox.Show("choose folder then enter folder name then click on Rename ");
+                dialog.ShowDialog();
+                textBox2.Text = dialog.SelectedPath;
 
-                 }
+            }
 
-                 else if (textBox2.Text == textBox1.Text )
-                 {      
-                       string fristname = textBox2.Text;
-                       string secondName = textBox1.Text;
-                       Directory.Move(fristname, secondName);
-                       textBox2.Text = "";
-                       textBox1.Text = "";
-                       MessageBox.Show("folder Renamed");
-                  }
+            else if (textBox2.Text == textBox1.Text)
+            {
+                string fristname = textBox2.Text;
+                string secondName = textBox1.Text;
+                Directory.Move(fristname, secondName);
+                textBox2.Text = "";
+                textBox1.Text = "";
+                MessageBox.Show("folder Renamed");
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -78,24 +81,41 @@ namespace Project_File_Manager
         {
 
 
-            OpenFileDialog fileDialog = new OpenFileDialog();
-
-
-            fileDialog.Title = "Select File";
-            fileDialog.InitialDirectory = @"C:\";//--"C:\\;
-            fileDialog.Filter = "All files (*.*)|*.*|Text File (*.txt)|.txt";
-            fileDialog.FilterIndex = 2;
-            fileDialog.ShowDialog();
-            if (fileDialog.FileName != null)
+            DialogResult S = MessageBox.Show(" Do you want to open folder","confirmation",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (S == DialogResult.Yes)
             {
-                textBox2.Text = fileDialog.FileName;
+                folderBrowserDialog1 = new FolderBrowserDialog();
+
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                {
+
+                    textBox2.Text = folderBrowserDialog1.SelectedPath;
+
+                }
             }
             else
             {
-                textBox2.Text = "you didn't select the file";
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.Title = "Select folder";
+                fileDialog.InitialDirectory = @"C:\";//--"C:\\;
+                fileDialog.Filter = "All files (*.*)|*.*|Text File (*.txt)|.txt";
+                fileDialog.FilterIndex = 2;
+                fileDialog.ShowDialog();
+                if (fileDialog.FileName != null)
+                {
+                    textBox2.Text = fileDialog.FileName;
+                }
+                else
+                {
+                    textBox2.Text = "you didn't select the file";
+                }
+
+
+                textBox2.Text = fileDialog.FileName;
+                textBox1.Text = Path.GetFileName(fileDialog.FileName);
             }
-            textBox2.Text = fileDialog.FileName;
-            textBox1.Text = Path.GetFileName(fileDialog.FileName);
+
+
             /*fileDialog.Multiselect = true;
             foreach(string file in fileDialog.FileNames)
             {
@@ -104,6 +124,10 @@ namespace Project_File_Manager
 
 
         }
+
+
+
+
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
