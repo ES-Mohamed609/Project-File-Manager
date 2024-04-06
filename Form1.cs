@@ -62,15 +62,35 @@ namespace Project_File_Manager
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       public string sourcName= "";
+        private void  Delbtn_Click(object sender, EventArgs e)
         {
-
+         if(file.Exists(sourcName)
+         {
+         file.Delete(sourcName);
+         }
+          if(Directory.Exists(sourcName)
+         {
+         Directory.Delete(sourcName);
+         }
+        else if(file.Exists(sourcName) == false || Directory.Exists(sourcName) == false)
+        {  
+          MessageBox.Show("It is already  not exist");
+        }
+public string sourceName="";
+public string destName="";
+        private void  Movbtn_Click(object sender, EventArgs e)
+        {
+       try 
+         {
+          Directory.Move(sourceName , destName)
+         }
+         catch (IOException exp)
+         {
+           MessageBox.Show(exp.Message)
+         }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
