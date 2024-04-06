@@ -103,7 +103,7 @@ public string destName="";
 
             DialogResult S = MessageBox.Show(" Do you want to open folder","confirmation",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (S == DialogResult.Yes)
-            {
+            {    FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
                 folderBrowserDialog1 = new FolderBrowserDialog();
 
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
