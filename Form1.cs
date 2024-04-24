@@ -4,7 +4,9 @@ using System.Windows.Forms;
 namespace Project_File_Manager
 {
     public partial class Form1 : Form
-    {
+    {     
+         
+        FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
         public Form1()
         {
             InitializeComponent();
@@ -12,26 +14,47 @@ namespace Project_File_Manager
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "" && textBox1.Text == "")
-            {
-                FolderBrowserDialog dialog = new FolderBrowserDialog();
-                MessageBox.Show("choose folders’path then enter folders’name then click on Create ");
-                dialog.ShowDialog();
-                textBox2.Text = dialog.SelectedPath;
+           DialogResult S = MessageBox.Show(" Do you want to create folder folder", "confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+          if (S == DialogResult.Yes)
+       {if (textBox2.Text != "" && textBox1.Text == "")
+        {
+         MessageBox.Show("enter name");
 
-            }
-            else if (textBox2.Text != "" && textBox1.Text == "")
-            {
-                MessageBox.Show("enter name");
+     }
+     else if (textBox2.Text != "" && textBox1.Text != "")
+     {
+         Directory.CreateDirectory(textBox2.Text + textBox1.Text);
+         textBox2.Text = "";
+         textBox1.Text = "";
 
-            }
-            else if (textBox2.Text != "" && textBox1.Text != "")
-            {
-                Directory.CreateDirectory(textBox2.Text + textBox1.Text);
-                textBox2.Text = "";
-                textBox1.Text = "";
-                MessageBox.Show("folder created");
-            }
+     }
+
+    }
+    else {
+   try
+    {
+             // Specify the file name and create the file
+             string fileName = Path.Combine(folderBrowserDialog1.SelectedPath, textBox1.Text);
+             using (FileStream fs = File.Create(fileName))
+             {
+                 // You can write content to the file if needed
+                 // For example:
+                 //byte[] content = new System.Text.UTF8Encoding(true).GetBytes("This is some example content.");
+                 //fs.Write(content, 0, content.Length);
+             }
+             MessageBox.Show("File created successfully at: " + fileName, "File Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+         textBox2.Text = "";
+         textBox1.Text = "";
+
+     }
+
+
+     catch (Exception ex)
+     {
+         MessageBox.Show("Error creating file: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+     }
+
+ }
 
         }
 
@@ -62,20 +85,21 @@ namespace Project_File_Manager
        public string sourcName= "";
         private void  Delbtn_Click(object sender, EventArgs e)
         {
-         if(file.Exists(sourcName)
-         {
-         file.Delete(sourcName);
-         }
+            if(file.Exists(sourcName)
+           {
+             file.Delete(sourcName);
+            }
           if(Directory.Exists(sourcName)
-         {
-         Directory.Delete(sourcName);
-         }
-        else if(file.Exists(sourcName) == false || Directory.Exists(sourcName) == false)
-        {  
+           {
+          Directory.Delete(sourcName);
+           }
+          else if(file.Exists(sourcName) == false || Directory.Exists(sourcName) == false)
+          {  
           MessageBox.Show("It is already  not exist");
-        }
-public string sourceName="";
-public string destName="";
+          } 
+      
+      public string sourceName="";
+     public string destName="";
         private void  Movbtn_Click(object sender, EventArgs e)
         {
        try 
@@ -100,7 +124,7 @@ public string destName="";
 
             DialogResult S = MessageBox.Show(" Do you want to open folder","confirmation",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (S == DialogResult.Yes)
-            {    FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+            {   // FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
                 folderBrowserDialog1 = new FolderBrowserDialog();
 
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
