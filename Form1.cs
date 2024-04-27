@@ -33,7 +33,7 @@ namespace Project_File_Manager
     else {
    try
     {
-             // Specify the file name and create the file
+           
              string fileName = Path.Combine(folderBrowserDialog1.SelectedPath, textBox1.Text);
              FileStream fs = File.Create(fileName);
             
