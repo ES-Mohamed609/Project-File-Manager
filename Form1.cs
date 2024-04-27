@@ -35,13 +35,8 @@ namespace Project_File_Manager
     {
              // Specify the file name and create the file
              string fileName = Path.Combine(folderBrowserDialog1.SelectedPath, textBox1.Text);
-             using (FileStream fs = File.Create(fileName))
-             {
-                 // You can write content to the file if needed
-                 // For example:
-                 //byte[] content = new System.Text.UTF8Encoding(true).GetBytes("This is some example content.");
-                 //fs.Write(content, 0, content.Length);
-             }
+             FileStream fs = File.Create(fileName);
+            
              MessageBox.Show("File created successfully at: " + fileName, "File Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
          textBox2.Text = "";
          textBox1.Text = "";
